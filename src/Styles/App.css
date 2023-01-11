@@ -17,16 +17,62 @@ h1 {
   padding: 10px;
 }
 
-button{
+.addbtn {
   border: none;
   background-color: green;
   outline: none;
   padding: 10px;
   border-radius: 10px;
-  color:#fff;
-  transition:0.5s;
+  color: #fff;
+  transition: 0.3s;
   margin-right: 5px;
+  font-weight: bold;
 }
-button:hover{
-  opacity: 0.8;
+.addbtn:hover {
+  color: rgb(203, 203, 52);
+}
+
+/* Adding Page Style */
+
+h2 {
+  font-weight: bold;
+  text-align: center;
+  color: teal;
+  font-size: 35px;
+}
+
+.row {
+  margin: 20px auto;
+}
+.row label {
+  padding-left: 0;
+  font-size: 20px;
+  font-family: "Pacifico", cursive;
+}
+.row input {
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  outline: none;
+  border: 2px solid gray;
+}
+
+.row input:focus {
+  border: 2px solid teal;
+}
+
+.btn {
+  background-color: teal;
+  border: none;
+  outline: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  margin-right: 5px;
+  font-weight: bold;
+  transition: 0.3s;
+  color: #fff;
+}
+.btn:hover {
+  background-color: #ba1f23;
+  color: #fff;
 }

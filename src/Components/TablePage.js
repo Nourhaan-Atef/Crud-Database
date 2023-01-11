@@ -1,4 +1,5 @@
 import React, { Fragment } from "react";
+import { NavLink } from "react-router-dom";
 import Styles from "../Styles/table.module.css";
 
 function TablePage() {
@@ -22,11 +23,16 @@ function TablePage() {
               <td>01289780115</td>
               <td>nouratef@gmail.com</td>
               <td>
-                <button className={Styles.btn}>Edit</button>
-                <button className={Styles.btn}>Del</button>
+                <NavLink to="/ModifyPage">
+                  <button className={`${Styles.btn} ${Styles.edit}`}>
+                    Edit
+                  </button>
+                </NavLink>
+                <button className={`${Styles.btn} ${Styles.delete}`}>
+                  Del
+                </button>
               </td>
             </tr>
-          
           </tbody>
         </table>
       </div>
