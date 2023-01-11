@@ -10,17 +10,26 @@ function ModifyPage({ title, btnN, persons, newPersonsData, setPersons }) {
   const [modified, setModified] = useState(false);
   const handleModify = (e) => {
     e.preventDefault();
-    setPersons([
-      ...persons,
-      {
-        id: newPersonsData[0].id,
-        fname: fname,
-        lname: lname,
-        phone: phone,
-        email: email,
-      },
-    ]);
-    setModified(true);
+    if (fname === "" || lname === "" || phone === "" || email === "") {
+      setModified(false);
+      setPersons(persons);
+    } else {
+      setPersons([
+        ...persons,
+        {
+          id: newPersonsData[0].id,
+          fname: fname,
+          lname: lname,
+          phone: phone,
+          email: email,
+        },
+      ]);
+      setFname("");
+      setLname("");
+      setPhone("");
+      setEmail("");
+      setModified(true);
+    }
 
     return persons;
   };
@@ -29,7 +38,7 @@ function ModifyPage({ title, btnN, persons, newPersonsData, setPersons }) {
       <Header />
       <div className="container">
         <h2>{title}</h2>
-        <form onSubmit={handleModify}>
+        <form>
           <div className="row">
             <label>First Name</label>
             <input
@@ -70,13 +79,15 @@ function ModifyPage({ title, btnN, persons, newPersonsData, setPersons }) {
             />
           </div>
 
-          <button className="btn">{btnN}</button>
+          <button className="btn" onClick={handleModify}>
+            {btnN}
+          </button>
           <NavLink to="/Crud-Database">
             <button className="btn">BACK TO HOME</button>
           </NavLink>
         </form>
         {modified ? (
-          <div className="row justify-content-center align-items-center"> 
+          <div className="row justify-content-center align-items-center">
             <p className="success">Successfully Modified</p>
           </div>
         ) : (
