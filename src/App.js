@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import HomePage from "./Components/HomePage";
 import AddingPage from "./Components/AddingPage";
 import { useState } from "react";
-// import ModifyPage from "./Components/ModifyPage";
+import ModifyPage from "./Components/ModifyPage";
 
 function App() {
   const [persons, setPersons] = useState([
@@ -22,6 +22,21 @@ function App() {
       phone: "0123486254",
     },
   ]);
+
+  const [newPersonsData, setNewPersonsData] = useState([]);
+
+  // MODIFY FUNCTIONS
+  const spacificPerson = (id) => {
+    const person = persons.filter((person) => person.id === id);
+    const allPresonsExceptPerson = persons.filter((person) => person.id !== id);
+    setNewPersonsData(person);
+    setPersons(allPresonsExceptPerson);
+  };
+  // DELETE fUNCTON
+  const handleDelete = (id) => {
+    const deletedITem = persons.filter((person) => person.id !== id);
+    setPersons(deletedITem);
+  };
   return (
     <Router>
       <div className="container">
@@ -29,7 +44,13 @@ function App() {
           <Route
             path="/Crud-Database"
             exact
-            element={<HomePage persons={persons} />}
+            element={
+              <HomePage
+                persons={persons}
+                handleDelete={handleDelete}
+                spacificPerson={spacificPerson}
+              />
+            }
           />
           <Route
             path="/AddingPage"
@@ -44,7 +65,15 @@ function App() {
           />
           <Route
             path="/ModifyPage"
-            element={<AddingPage title="MODIFYING ITEMS PAGE" btnN="MODIFY" />}
+            element={
+              <ModifyPage
+                title="MODIFYING ITEMS PAGE"
+                btnN="MODIFY"
+                persons={persons}
+                newPersonsData={newPersonsData}
+                setPersons={setPersons}
+              />
+            }
           />
         </Routes>
       </div>

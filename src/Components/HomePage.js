@@ -4,9 +4,8 @@ import "../Styles/App.css";
 import { NavLink } from "react-router-dom";
 import Styles from "../Styles/table.module.css";
 
-function HomePage({ persons }) {
+function HomePage({ persons, handleDelete, spacificPerson }) {
   const [searchFName, setSearchFName] = useState("");
-
   return (
     <Fragment>
       <Header />
@@ -45,11 +44,19 @@ function HomePage({ persons }) {
                     <td>{person.email}</td>
                     <td>
                       <NavLink to="/ModifyPage">
-                        <button className={`${Styles.btn} ${Styles.edit}`}>
+                        <button
+                          className={`${Styles.btn} ${Styles.edit}`}
+                          onClick={() => {
+                            spacificPerson(person.id);
+                          }}
+                        >
                           Edit
                         </button>
                       </NavLink>
-                      <button className={`${Styles.btn} ${Styles.delete}`}>
+                      <button
+                        className={`${Styles.btn} ${Styles.delete}`}
+                        onClick={() => handleDelete(person.id)}
+                      >
                         Del
                       </button>
                     </td>
