@@ -76,3 +76,16 @@ h2 {
   background-color: #ba1f23;
   color: #fff;
 }
+
+/* Success Style */
+.success {
+  text-align: center;
+  padding: 10px;
+  border-radius: 10px;
+  margin-top: 10px;
+  background-color: yellow;
+  font-weight: bold;
+  font-family: "Arvo", serif;
+  color: #ba1f23;
+  font-size: 20px;
+}

@@ -7,7 +7,7 @@ function ModifyPage({ title, btnN, persons, newPersonsData, setPersons }) {
   const [lname, setLname] = useState(newPersonsData[0].lname);
   const [phone, setPhone] = useState(newPersonsData[0].phone);
   const [email, setEmail] = useState(newPersonsData[0].email);
-
+  const [modified, setModified] = useState(false);
   const handleModify = (e) => {
     e.preventDefault();
     setPersons([
@@ -20,6 +20,8 @@ function ModifyPage({ title, btnN, persons, newPersonsData, setPersons }) {
         email: email,
       },
     ]);
+    setModified(true);
+
     return persons;
   };
   return (
@@ -73,6 +75,13 @@ function ModifyPage({ title, btnN, persons, newPersonsData, setPersons }) {
             <button className="btn">BACK TO HOME</button>
           </NavLink>
         </form>
+        {modified ? (
+          <div className="row justify-content-center align-items-center"> 
+            <p className="success">Successfully Modified</p>
+          </div>
+        ) : (
+          ""
+        )}
       </div>
     </Fragment>
   );

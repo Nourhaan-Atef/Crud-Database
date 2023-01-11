@@ -7,6 +7,7 @@ function AddingPage({ title, btnN, persons, setPersons }) {
   const [lname, setLname] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
+  const [added, setAdded] = useState(false);
 
   const addPerson = (e) => {
     e.preventDefault();
@@ -18,6 +19,8 @@ function AddingPage({ title, btnN, persons, setPersons }) {
     setLname("");
     setPhone("");
     setEmail("");
+    setAdded(true);
+
     return persons;
   };
 
@@ -71,6 +74,13 @@ function AddingPage({ title, btnN, persons, setPersons }) {
             <button className="btn">BACK TO HOME</button>
           </NavLink>
         </form>
+        {added ? (
+          <div className="row justify-content-center align-items-center">
+            <p className="success">Successfully Added</p>
+          </div>
+        ) : (
+          ""
+        )}
       </div>
     </Fragment>
   );
